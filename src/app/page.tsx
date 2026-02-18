@@ -7,6 +7,7 @@ type Post = {
   code: string;
   author: string | null;
   body: string;
+  url: string | null;
   posted_at: string | null;
   created_at: string;
 };
@@ -162,7 +163,18 @@ export default function Page() {
                 {new Date(p.created_at).toLocaleString()}
               </span>
             </div>
-            <div style={{ marginTop: 8, whiteSpace: "pre-wrap" }}>{p.body}</div>
+
+            <div style={{ marginTop: 8, whiteSpace: "pre-wrap" }}>
+              {p.body.length > 500 ? p.body.slice(0, 500) + "…" : p.body}
+            </div>
+
+            {p.url ? (
+              <div style={{ marginTop: 8 }}>
+                <a href={p.url} target="_blank" rel="noreferrer" style={{ fontSize: 13 }}>
+                  元投稿を開く ↗
+                </a>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
