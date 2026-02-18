@@ -3,10 +3,7 @@ import path from "path";
 import fs from "fs";
 
 function pickDbPath() {
-  // 本来の指定（Renderの永続ディスクを付けたら /data/... を使う）
   const desired = process.env.SQLITE_PATH || path.join(process.cwd(), "data.sqlite");
-
-  // まず desired を試す。ディレクトリが無ければ作る。作れなければ /tmp に逃がす。
   try {
     const dir = path.dirname(desired);
     if (dir && dir !== "." && !fs.existsSync(dir)) {
@@ -14,7 +11,6 @@ function pickDbPath() {
     }
     return desired;
   } catch {
-    // ビルド環境で /data が作れない等のときの逃げ道
     return "/tmp/data.sqlite";
   }
 }
@@ -22,6 +18,7 @@ function pickDbPath() {
 const dbPath = pickDbPath();
 export const db = new Database(dbPath);
 
+// schema
 db.exec(`
 CREATE TABLE IF NOT EXISTS posts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,4 +31,12 @@ CREATE TABLE IF NOT EXISTS posts (
 
 CREATE INDEX IF NOT EXISTS idx_posts_created_at ON posts(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_code_created_at ON posts(code, created_at DESC);
+
+CREATE TABLE IF NOT EXISTS watchlist (
+  code TEXT PRIMARY KEY,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- 初期値（最低1銘柄）
+INSERT OR IGNORE INTO watchlist(code) VALUES ('7203');
 `);
