@@ -5,6 +5,7 @@ function isValidCode(code: string) {
 }
 
 export async function GET() {
+  // 新しい順（追加した順に上へ）
   const rows = db.prepare(`SELECT code, created_at FROM watchlist ORDER BY created_at DESC`).all();
   return Response.json({ watchlist: rows });
 }
