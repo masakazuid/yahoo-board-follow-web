@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { XMLParser } from "fast-xml-parser";
+import he from "he";
 
 type FeedRow = { code: string; feed_url: string };
 
@@ -56,9 +57,23 @@ function normText(v: any): string {
   return String(v);
 }
 
-// 雑にHTMLタグ除去（必要なら後で改善）
+// 雑にHTMLタグ除去
 function stripHtml(s: string) {
   return s.replace(/<[^>]*>/g, "");
+}
+
+function toIsoOrNull(pubDateRaw: string): string | null {
+  const s = pubDateRaw.trim();
+  if (!s) return null;
+  const t = Date.parse(s); // RFC822もだいたい通る
+  if (!Number.isFinite(t)) return null;
+  return new Date(t).toISOString();
+}
+
+function cleanBody(raw: string): string {
+  // 1) HTMLエンティティデコード → 2) タグ除去 → 3) trim
+  const decoded = he.decode(raw);
+  return stripHtml(decoded).replace(/\r\n/g, "\n").trim();
 }
 
 function insertItems(code: string, items: RssItem[]) {
@@ -79,13 +94,13 @@ function insertItems(code: string, items: RssItem[]) {
         normText(it.description) ||
         normText(it.title);
 
-      const bodyText = stripHtml(bodyRaw).trim();
+      const bodyText = cleanBody(bodyRaw);
       const body500 = bodyText.length > 500 ? bodyText.slice(0, 500) + "…" : bodyText;
 
       const author = normText(it.author) || null;
-      const posted_at = normText(it.pubDate) || null;
+      const posted_iso = toIsoOrNull(normText(it.pubDate));
 
-      stmt.run(code, author, body500 || "(no body)", url, posted_at, external_id);
+      stmt.run(code, author, body500 || "(no body)", url, posted_iso, external_id);
       n++;
     }
     return n;
