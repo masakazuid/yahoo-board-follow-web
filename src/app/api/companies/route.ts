@@ -1,7 +1,8 @@
 import { db } from "@/lib/db";
 
-function isValidCode(code: string) {
-  return /^[0-9]{4}$/.test(code);
+function isValidKey(code: string) {
+  // 英数字 + 記号少し（内部ID src_xxx や ticker 想定）
+  return /^[A-Za-z0-9._:-]{1,64}$/.test(code);
 }
 
 export async function GET() {
@@ -18,8 +19,8 @@ export async function POST(req: Request) {
   const code = String(body.code ?? "").trim();
   const name = String(body.name ?? "").trim();
 
-  if (!isValidCode(code)) {
-    return Response.json({ ok: false, error: "code must be 4 digits" }, { status: 400 });
+  if (!isValidKey(code)) {
+    return Response.json({ ok: false, error: "invalid code" }, { status: 400 });
   }
   if (!name) {
     return Response.json({ ok: false, error: "name is required" }, { status: 400 });
