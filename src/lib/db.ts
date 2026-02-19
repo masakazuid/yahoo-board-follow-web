@@ -36,6 +36,13 @@ CREATE TABLE IF NOT EXISTS companies (
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+CREATE TABLE IF NOT EXISTS companies (
+  code TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);
 CREATE INDEX IF NOT EXISTS idx_posts_created_at ON posts(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_code_created_at ON posts(code, created_at DESC);
