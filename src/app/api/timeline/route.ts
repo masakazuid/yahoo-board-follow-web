@@ -2,11 +2,14 @@ import { db } from "@/lib/db";
 
 export async function GET() {
   const rows = db.prepare(`
-    SELECT id, code, author, body, url, posted_at, created_at
-    FROM posts
+    SELECT
+      p.id, p.code, c.name AS company_name,
+      p.author, p.body, p.url, p.posted_at, p.created_at
+    FROM posts p
+    LEFT JOIN companies c ON c.code = p.code
     ORDER BY
-      datetime(COALESCE(posted_at, created_at)) DESC,
-      id DESC
+      datetime(COALESCE(p.posted_at, p.created_at)) DESC,
+      p.id DESC
     LIMIT 100
   `).all();
 

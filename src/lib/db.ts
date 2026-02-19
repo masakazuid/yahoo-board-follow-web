@@ -25,8 +25,15 @@ CREATE TABLE IF NOT EXISTS posts (
   body TEXT NOT NULL,
   url TEXT,
   posted_at TEXT,
-  external_id TEXT,
+  external_id TEXT UNIQUE,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS companies (
+  code TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);
