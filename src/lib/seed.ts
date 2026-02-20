@@ -11,9 +11,9 @@ export function ensureSeeded() {
   if (done) return;
   done = true;
 
-  // 既にwatchlistがあるなら何もしない（あなたが追加した設定を壊さない）
-  const n = (db.prepare("SELECT COUNT(*) AS n FROM watchlist").get() as any)?.n ?? 0;
-  if (n > 0) return;
+  // 既にfeedsがあるなら何もしない（あなたが追加した設定を壊さない）
+  const nFeeds = (db.prepare("SELECT COUNT(*) AS n FROM feeds").get() as any)?.n ?? 0;
+  if (nFeeds > 0) return;
 
   const seedPath = path.join(process.cwd(), "src/seed/seed_feeds.json");
   if (!fs.existsSync(seedPath)) return;

@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS posts (
   body TEXT NOT NULL,
   url TEXT,
   posted_at TEXT,
+  hash TEXT UNIQUE,
   external_id TEXT UNIQUE,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -35,17 +36,6 @@ CREATE TABLE IF NOT EXISTS companies (
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
-
-CREATE TABLE IF NOT EXISTS companies (
-  code TEXT PRIMARY KEY,
-  name TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now')),
-  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
-CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);
-CREATE INDEX IF NOT EXISTS idx_posts_created_at ON posts(created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_posts_code_created_at ON posts(code, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS watchlist (
   code TEXT PRIMARY KEY,
@@ -58,14 +48,26 @@ CREATE TABLE IF NOT EXISTS feeds (
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
-INSERT OR IGNORE INTO watchlist(code) VALUES ('7203');
+CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_hash ON posts(hash);
+CREATE INDEX IF NOT EXISTS idx_posts_created_at ON posts(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_posts_code_created_at ON posts(code, created_at DESC);
 `);
 
 // migrations for older DBs
 for (const sql of [
   `ALTER TABLE posts ADD COLUMN url TEXT;`,
   `ALTER TABLE posts ADD COLUMN external_id TEXT;`,
+  `ALTER TABLE posts ADD COLUMN hash TEXT;`,
 ]) {
-  try { db.exec(sql); } catch {}
+  try {
+    db.exec(sql);
+  } catch {}
 }
-try { db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);`); } catch {}
+
+try {
+  db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_external_id ON posts(external_id);`);
+} catch {}
+try {
+  db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_posts_hash ON posts(hash);`);
+} catch {}
