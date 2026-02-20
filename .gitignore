@@ -43,3 +43,7 @@ next-env.d.ts
 # local db
 data.sqlite
 *.sqlite
+
+# local sqlite
+data.sqlite
+data/

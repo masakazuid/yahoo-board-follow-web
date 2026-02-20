@@ -1,0 +1,128 @@
+[
+  {
+    "ticker": "456A",
+    "name": "HUMAN MADE(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835704/bc57e4414e156c472a35c4a7c6c5fbd4",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835704/bc57e4414e156c472a35c4a7c6c5fbd4/comment.xml",
+    "code": "src_f4e7f0bf033f"
+  },
+  {
+    "ticker": "151A",
+    "name": "(株)ダイブ",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835105/96438ed9171c250f3c13934e7f1f2b9e",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/96438ed9171c250f3c13934e7f1f2b9e/comment.xml",
+    "code": "src_c1640c9b62ca"
+  },
+  {
+    "ticker": "1376",
+    "name": "カネコ種苗(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1001376/a5aba5ma53bcoid",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001376/a5aba5ma53bcoid/comment.xml",
+    "code": "src_d59948d75761"
+  },
+  {
+    "ticker": "1518",
+    "name": "三井松島ホールディングス(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1001518/bb00fbebeegbbba6h",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001518/bb00fbebeegbbba6h/comment.xml",
+    "code": "src_291c14176ab1"
+  },
+  {
+    "ticker": "4208",
+    "name": "UBE(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1004208/1a7it6bdbbba",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004208/1a7it6bdbbba/comment.xml",
+    "code": "src_d211d6f3a792"
+  },
+  {
+    "ticker": "8595",
+    "name": "ジャフコ グループ(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1008595/a58a5ca5ua53",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008595/a58a5ca5ua53/comment.xml",
+    "code": "src_e18e93862153"
+  },
+  {
+    "ticker": "3636",
+    "name": "(株)三菱総合研究所",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1003636/3636",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003636/3636/comment.xml",
+    "code": "src_63269cf702c5"
+  },
+  {
+    "ticker": "1770",
+    "name": "藤田エンジニアリング(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1001770/fa3eda5a8a5sa58a5ka5a2a5ja5sa50",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001770/fa3eda5a8a5sa58a5ka5a2a5ja5sa50/comment.xml",
+    "code": "src_cee6cca7941e"
+  },
+  {
+    "ticker": "4933",
+    "name": "(株)I-ne",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835640/16c683b92ae31d2fb1ace5193120ad9a",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835640/16c683b92ae31d2fb1ace5193120ad9a/comment.xml",
+    "code": "src_3380a615a430"
+  },
+  {
+    "ticker": "7094",
+    "name": "(株)NexTone",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835105/447aca13ef6045fc3fdf324cee713642",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/447aca13ef6045fc3fdf324cee713642/comment.xml",
+    "code": "src_9ebac8662f91"
+  },
+  {
+    "ticker": "3388",
+    "name": "明治電機工業(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1003388/3388",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003388/3388/comment.xml",
+    "code": "src_e2c3c3f31b1c"
+  },
+  {
+    "ticker": "7347",
+    "name": "(株)マーキュリアホールディングス",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835708/fb02b999fad2e57eb760878a0acb5875",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/fb02b999fad2e57eb760878a0acb5875/comment.xml",
+    "code": "src_b96512bd87ef"
+  },
+  {
+    "ticker": "5363",
+    "name": "(株)TYK",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1005363/a3ta3ya3k",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005363/a3ta3ya3k/comment.xml",
+    "code": "src_c9abd8416104"
+  },
+  {
+    "ticker": "8255",
+    "name": "アクシアル リテイリング(株)",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1008255/86bfae",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008255/86bfae/comment.xml",
+    "code": "src_6b92e46ae95d"
+  },
+  {
+    "ticker": "7172",
+    "name": "(株)ジャパンインベストメントアドバイザー",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1835708/334961eb7d13632aec1981255e9345b8",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/334961eb7d13632aec1981255e9345b8/comment.xml",
+    "code": "src_d57fa8ad1229"
+  },
+  {
+    "ticker": "8218",
+    "name": "(株)コメリ",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1008218/a53a5aa5j",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008218/a53a5aa5j/comment.xml",
+    "code": "src_5ce9c45a668e"
+  },
+  {
+    "ticker": "7148",
+    "name": "(株)FPG",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1007148/7148",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007148/7148/comment.xml",
+    "code": "src_05a14f9d0fd0"
+  },
+  {
+    "ticker": "6149",
+    "name": "(株)小田原エンジニアリング",
+    "message_url": "https://finance.yahoo.co.jp/cm/message/1006149/beaeed86a5a8a5sa58a5ka5a2a5ja5sa50",
+    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006149/beaeed86a5a8a5sa58a5ka5a2a5ja5sa50/comment.xml",
+    "code": "src_4baf59f84fbe"
+  }
+]
