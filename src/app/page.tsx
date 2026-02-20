@@ -35,25 +35,17 @@ export default function Page() {
     return m;
   }, [companies]);
 
-  async function loadTimeline() {
-    const res = await fetch("/api/timeline", { cache: "no-store" });
-    const data = await res.json();
-    setPosts(data.posts);
-  }
-  async function loadWatchlist() {
-    const res = await fetch("/api/watchlist", { cache: "no-store" });
-    const data = await res.json();
-    setWatchlist(data.watchlist);
-  }
-  async function loadFeeds() {
-    const res = await fetch("/api/feeds", { cache: "no-store" });
-    const data = await res.json();
-    setFeeds(data.feeds);
-  }
-  async function loadCompanies() {
-    const res = await fetch("/api/companies", { cache: "no-store" });
-    const data = await res.json();
-    setCompanies(data.companies);
+  async function loadAll() {
+    const [t, w, f, c] = await Promise.all([
+      fetch("/api/timeline", { cache: "no-store" }).then((r) => r.json()),
+      fetch("/api/watchlist", { cache: "no-store" }).then((r) => r.json()),
+      fetch("/api/feeds", { cache: "no-store" }).then((r) => r.json()),
+      fetch("/api/companies", { cache: "no-store" }).then((r) => r.json()),
+    ]);
+    setPosts(t.posts ?? []);
+    setWatchlist(w.watchlist ?? []);
+    setFeeds(f.feeds ?? []);
+    setCompanies(c.companies ?? []);
   }
 
   async function refresh() {
@@ -61,7 +53,7 @@ export default function Page() {
     setMsg("");
     const r = await fetch("/api/refresh", { method: "POST" });
     if (!r.ok) setMsg(`refresh failed: ${await r.text()}`);
-    await Promise.all([loadTimeline(), loadWatchlist(), loadFeeds(), loadCompanies()]);
+    await loadAll();
     setLoading(false);
   }
 
@@ -77,9 +69,7 @@ export default function Page() {
     const data = await r.json().catch(() => ({}));
     if (!r.ok) setMsg(data.error ?? "failed");
     setRssUrlInput("");
-    // nameは残してもいいけど、次の入力を楽にするなら消す
-    // setNameInput("");
-    await Promise.all([loadFeeds(), loadWatchlist(), loadCompanies(), loadTimeline()]);
+    await loadAll();
   }
 
   async function removeFeed(code: string) {
@@ -87,14 +77,11 @@ export default function Page() {
     const r = await fetch(`/api/feeds?code=${encodeURIComponent(code)}`, { method: "DELETE" });
     const data = await r.json().catch(() => ({}));
     if (!r.ok) setMsg(data.error ?? "failed");
-    await Promise.all([loadFeeds(), loadWatchlist(), loadCompanies(), loadTimeline()]);
+    await loadAll();
   }
 
   useEffect(() => {
-    loadFeeds();
-    loadWatchlist();
-    loadCompanies();
-    loadTimeline();
+    loadAll();
   }, []);
 
   return (
@@ -125,6 +112,9 @@ export default function Page() {
         <div style={{ marginTop: 10, display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
           <button onClick={refresh} disabled={loading} style={{ padding: "8px 12px", border: "1px solid #ccc", borderRadius: 8, cursor: "pointer" }}>
             {loading ? "更新中..." : "更新（RSS取得）"}
+          </button>
+          <button onClick={loadAll} style={{ padding: "8px 12px", border: "1px solid #ccc", borderRadius: 8, cursor: "pointer" }}>
+            再読込
           </button>
           {msg ? <span style={{ color: "#b00020" }}>{msg}</span> : null}
         </div>
