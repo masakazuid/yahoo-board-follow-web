@@ -1,19 +1,24 @@
 import Database from "better-sqlite3";
-import path from "node:path";
-import fs from "node:fs";
+import path from "path";
+import fs from "fs";
 
-function resolveDbPath() {
-  const p = process.env.SQLITE_PATH || path.join(process.cwd(), "data.sqlite");
-  const dir = path.dirname(p);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  return p;
+function pickDbPath() {
+  const desired = process.env.SQLITE_PATH || path.join(process.cwd(), "data.sqlite");
+  try {
+    const dir = path.dirname(desired);
+    if (dir && dir !== "." && !fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    return desired;
+  } catch {
+    return "/tmp/data.sqlite";
+  }
 }
 
-export const db = new Database(resolveDbPath());
+const dbPath = pickDbPath();
+export const db = new Database(dbPath);
 
 db.exec(`
-  PRAGMA journal_mode = WAL;
-
   CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     code TEXT NOT NULL,
