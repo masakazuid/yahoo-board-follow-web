@@ -43,6 +43,14 @@ type IgnoredAuthor = {
 
 type TabKey = "board" | "disclosure";
 
+function formatDateTime(value: string | null | undefined) {
+  if (!value) return "";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return String(value);
+  return d.toLocaleString();
+}
+
+
 export default function Page() {
   const [tab, setTab] = useState<TabKey>("board");
 
@@ -399,7 +407,7 @@ export default function Page() {
                     }}
                   >
                     <div style={{ fontWeight: 700, marginBottom: 6 }}>
-                      {nm} [{d.code}] / {new Date(shownAt).toLocaleString()}
+                      {nm} [{d.code}] / {formatDateTime(shownAt)}
                     </div>
                     <div style={{ marginBottom: 8 }}>{d.title}</div>
                     <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
