@@ -222,47 +222,6 @@ export default function Page() {
           </div>
 
           <div style={{ marginBottom: 20 }}>
-            <div style={{ fontWeight: 700, marginBottom: 8 }}>登録済みフィード</div>
-            <div style={{ display: "grid", gap: 8 }}>
-              {feeds.map((f) => {
-                const nm = companyMap.get(f.code);
-                return (
-                  <div
-                    key={f.code}
-                    style={{
-                      display: "flex",
-                      gap: 8,
-                      alignItems: "center",
-                      border: "1px solid #e5e5e5",
-                      borderRadius: 10,
-                      padding: "10px 12px",
-                    }}
-                  >
-                    <div style={{ fontWeight: 700, minWidth: 280 }}>{nm ?? "（未設定）"}</div>
-                    <a href={f.feed_url} target="_blank" rel="noreferrer" style={{ wordBreak: "break-all" }}>
-                      RSS ↗
-                    </a>
-                    <button
-                      onClick={() => removeFeed(f.code)}
-                      title="削除"
-                      style={{
-                        marginLeft: "auto",
-                        border: "none",
-                        background: "transparent",
-                        cursor: "pointer",
-                        color: "#666",
-                        fontSize: 14,
-                      }}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div style={{ marginBottom: 20 }}>
             <div style={{ fontWeight: 700, marginBottom: 8 }}>監視（新しい順）</div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {watchlist.map((w) => (
