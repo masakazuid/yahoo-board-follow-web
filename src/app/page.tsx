@@ -286,7 +286,7 @@ export default function Page() {
           </div>
 
           <div style={{ color: "#666", marginBottom: 16 }}>
-            まずはタブだけ追加した段階です。次に取得元をつないで本物にします。
+            監視中コードの適時開示を新しい順に表示します。
           </div>
 
           <div style={{ display: "grid", gap: 12 }}>
