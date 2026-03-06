@@ -1,8 +1,6 @@
 import { db } from "@/lib/db";
-import { ensureSeeded } from "@/lib/seed";
 
 export async function GET() {
-  ensureSeeded();
   const rows = db.prepare(`
     SELECT
       p.id,
@@ -14,9 +12,16 @@ export async function GET() {
       p.posted_at,
       p.created_at
     FROM posts p
-    LEFT JOIN companies c ON c.code = p.code
-    ORDER BY datetime(COALESCE(p.posted_at, p.created_at)) DESC, p.id DESC
-    LIMIT 200
+    LEFT JOIN companies c
+      ON c.code = p.code
+    LEFT JOIN ignored_authors ia
+      ON ia.author_key = lower(trim(replace(replace(coalesce(p.author, ''), char(10), ' '), char(13), ' ')))
+    WHERE ia.author_key IS NULL
+    ORDER BY
+      COALESCE(p.posted_at, p.created_at) DESC,
+      p.id DESC
+    LIMIT 300
   `).all();
+
   return Response.json({ posts: rows });
 }

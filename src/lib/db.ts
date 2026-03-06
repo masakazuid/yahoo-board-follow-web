@@ -1,24 +1,19 @@
 import Database from "better-sqlite3";
-import path from "path";
-import fs from "fs";
+import path from "node:path";
+import fs from "node:fs";
 
-function pickDbPath() {
-  const desired = process.env.SQLITE_PATH || path.join(process.cwd(), "data.sqlite");
-  try {
-    const dir = path.dirname(desired);
-    if (dir && dir !== "." && !fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    return desired;
-  } catch {
-    return "/tmp/data.sqlite";
-  }
+function resolveDbPath() {
+  const p = process.env.SQLITE_PATH || path.join(process.cwd(), "data.sqlite");
+  const dir = path.dirname(p);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  return p;
 }
 
-const dbPath = pickDbPath();
-export const db = new Database(dbPath);
+export const db = new Database(resolveDbPath());
 
 db.exec(`
+  PRAGMA journal_mode = WAL;
+
   CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     code TEXT NOT NULL,
@@ -58,6 +53,12 @@ db.exec(`
     disclosed_at TEXT,
     source TEXT,
     external_id TEXT UNIQUE,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS ignored_authors (
+    author_key TEXT PRIMARY KEY,
+    author_label TEXT NOT NULL,
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
 
