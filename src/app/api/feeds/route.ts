@@ -3,9 +3,7 @@ import { ensureSeeded } from "@/lib/seed";
 import { codeFromFeedUrl } from "@/lib/key";
 
 function normalizeCode(v: unknown) {
-  const s = String(v ?? "").trim().toUpperCase();
-  if (!s) return "";
-  return s;
+  return String(v ?? "").trim().toUpperCase();
 }
 
 export async function GET() {

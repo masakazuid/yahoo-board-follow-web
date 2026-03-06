@@ -3,7 +3,11 @@ import path from "node:path";
 import { db } from "@/lib/db";
 import { codeFromFeedUrl } from "@/lib/key";
 
-type SeedRow = { name: string; feed_url: string };
+type SeedRow = {
+  code?: string;
+  name: string;
+  feed_url: string;
+};
 
 let done = false;
 
@@ -11,7 +15,6 @@ export function ensureSeeded() {
   if (done) return;
   done = true;
 
-  // 既にfeedsがあるなら何もしない（あなたが追加した設定を壊さない）
   const nFeeds = (db.prepare("SELECT COUNT(*) AS n FROM feeds").get() as any)?.n ?? 0;
   if (nFeeds > 0) return;
 
@@ -45,9 +48,10 @@ export function ensureSeeded() {
     for (const r of rows) {
       const feed_url = String(r.feed_url ?? "").trim();
       const name = String(r.name ?? "").trim();
-      if (!feed_url || !name) continue;
+      const code = String(r.code ?? "").trim().toUpperCase() || codeFromFeedUrl(feed_url);
 
-      const code = codeFromFeedUrl(feed_url);
+      if (!feed_url || !name || !code) continue;
+
       upsertCompany.run(code, name);
       upsertFeed.run(code, feed_url);
       addWatch.run(code);
