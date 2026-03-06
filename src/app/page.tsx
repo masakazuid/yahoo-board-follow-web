@@ -344,7 +344,7 @@ export default function Page() {
                   >
                     <span>
                       {nm ?? "（未設定）"} [{p.code}] / {p.author ?? "unknown"} /{" "}
-                      {new Date(p.created_at).toLocaleString()}
+                      {new Date(p.posted_at ?? p.created_at).toLocaleString()}
                     </span>
                     {p.author ? (
                       <button onClick={() => addIgnoredAuthor(p.author!)}>このユーザーを無視</button>
