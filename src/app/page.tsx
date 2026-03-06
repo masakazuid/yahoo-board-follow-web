@@ -52,6 +52,7 @@ export default function Page() {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [disclosures, setDisclosures] = useState<Disclosure[]>([]);
 
+  const [codeInput, setCodeInput] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [rssUrlInput, setRssUrlInput] = useState("");
 
@@ -113,18 +114,21 @@ export default function Page() {
 
   async function addOrUpdateFeed() {
     setMsg("");
+    const code = codeInput.trim().toUpperCase();
     const feed_url = rssUrlInput.trim();
     const name = nameInput.trim();
 
     const r = await fetch("/api/feeds", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ feed_url, name }),
+      body: JSON.stringify({ code, feed_url, name }),
     });
 
     const data = await r.json().catch(() => ({}));
     if (!r.ok) setMsg(data.error ?? "failed");
 
+    setCodeInput("");
+    setNameInput("");
     setRssUrlInput("");
     await loadBoard();
   }
@@ -194,6 +198,17 @@ export default function Page() {
             }}
           >
             <input
+              value={codeInput}
+              onChange={(e) => setCodeInput(e.target.value)}
+              placeholder="証券コード（例: 4933, 456A）"
+              style={{
+                padding: "8px 10px",
+                border: "1px solid #ccc",
+                borderRadius: 8,
+                width: 220,
+              }}
+            />
+            <input
               value={nameInput}
               onChange={(e) => setNameInput(e.target.value)}
               placeholder="会社名（表示名）"
@@ -212,7 +227,7 @@ export default function Page() {
                 padding: "8px 10px",
                 border: "1px solid #ccc",
                 borderRadius: 8,
-                width: 560,
+                width: 520,
                 maxWidth: "100%",
               }}
             />
@@ -234,7 +249,7 @@ export default function Page() {
                     background: "#fafafa",
                   }}
                 >
-                  {companyMap.get(w.code) ?? "（未設定）"}
+                  {(companyMap.get(w.code) ?? "（未設定）") + ` [${w.code}]`}
                 </span>
               ))}
             </div>
@@ -258,7 +273,7 @@ export default function Page() {
                   }}
                 >
                   <div style={{ fontWeight: 700, marginBottom: 6 }}>
-                    {nm ?? "（未設定）"} / {p.author ?? "unknown"} /{" "}
+                    {nm ?? "（未設定）"} [{p.code}] / {p.author ?? "unknown"} /{" "}
                     {new Date(p.created_at).toLocaleString()}
                   </div>
                   <div style={{ whiteSpace: "pre-wrap", lineHeight: 1.6 }}>{p.body}</div>
@@ -316,11 +331,10 @@ export default function Page() {
                     }}
                   >
                     <div style={{ fontWeight: 700, marginBottom: 6 }}>
-                      {nm} / {new Date(shownAt).toLocaleString()}
+                      {nm} [{d.code}] / {new Date(shownAt).toLocaleString()}
                     </div>
                     <div style={{ marginBottom: 8 }}>{d.title}</div>
                     <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                      <span style={{ color: "#666" }}>code: {d.code}</span>
                       {d.source ? <span style={{ color: "#666" }}>source: {d.source}</span> : null}
                       {d.url ? (
                         <a href={d.url} target="_blank" rel="noreferrer">
