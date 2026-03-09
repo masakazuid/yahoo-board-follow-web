@@ -22,44 +22,12 @@ function normalizeItem(raw: unknown) {
       ? (((raw as AnyObj).TDnet as AnyObj) ?? {})
       : ((raw as AnyObj) ?? {});
 
-  const code = pickString(base, [
-    "company_code",
-    "stock_code",
-    "code",
-    "security_code",
-  ]);
-
-  const companyName = pickString(base, [
-    "company_name",
-    "name",
-  ]);
-
-  const title = pickString(base, [
-    "title",
-    "document_title",
-    "subject",
-  ]);
-
-  const url = pickString(base, [
-    "document_url",
-    "url",
-    "link",
-  ]);
-
-  const pdfUrl = pickString(base, [
-    "pdf_url",
-    "document_url",
-    "url",
-    "link",
-  ]);
-
-  const disclosedAt = pickString(base, [
-    "pubdate",
-    "published_at",
-    "published",
-    "date",
-    "datetime",
-  ]);
+  const code = pickString(base, ["company_code", "stock_code", "code", "security_code"]);
+  const companyName = pickString(base, ["company_name", "name"]);
+  const title = pickString(base, ["title", "document_title", "subject"]);
+  const url = pickString(base, ["document_url", "url", "link"]);
+  const pdfUrl = pickString(base, ["pdf_url", "document_url", "url", "link"]);
+  const disclosedAt = pickString(base, ["pubdate", "published_at", "published", "date", "datetime"]);
 
   const extId =
     pickString(base, ["id", "external_id"]) ||
@@ -78,14 +46,14 @@ function normalizeItem(raw: unknown) {
 
 export async function POST() {
   try {
-    const feedRows = db.prepare(`
+    const watchRows = db.prepare(`
       SELECT code
-      FROM feeds
+      FROM watchlist
       ORDER BY created_at DESC, code ASC
     `).all() as Array<{ code: string }>;
 
     const codes = [...new Set(
-      feedRows
+      watchRows
         .map((r) => String(r.code || "").trim().toUpperCase())
         .filter(Boolean)
     )];
@@ -95,27 +63,21 @@ export async function POST() {
         ok: true,
         inserted: 0,
         skipped: 0,
-        message: "codes not found in feeds"
+        message: "codes not found in watchlist"
       });
     }
 
     const joined = codes.join("-");
-    const url =
-      `https://webapi.yanoshin.jp/webapi/tdnet/list/${joined}.json2?limit=200`;
+    const url = `https://webapi.yanoshin.jp/webapi/tdnet/list/${joined}.json2?limit=300`;
 
     const res = await fetch(url, {
       cache: "no-store",
-      headers: {
-        "user-agent": "yahoo-board-follow-web/1.0"
-      }
+      headers: { "user-agent": "yahoo-board-follow-web/1.0" }
     });
 
     if (!res.ok) {
       return Response.json(
-        {
-          ok: false,
-          error: `tdnet fetch failed: ${res.status} ${res.statusText}`
-        },
+        { ok: false, error: `tdnet fetch failed: ${res.status} ${res.statusText}` },
         { status: 502 }
       );
     }
@@ -128,21 +90,9 @@ export async function POST() {
 
     const insertDisclosure = db.prepare(`
       INSERT OR IGNORE INTO disclosures (
-        code,
-        title,
-        url,
-        pdf_url,
-        disclosed_at,
-        source,
-        external_id
+        code, title, url, pdf_url, disclosed_at, source, external_id
       ) VALUES (
-        @code,
-        @title,
-        @url,
-        @pdf_url,
-        @disclosed_at,
-        @source,
-        @external_id
+        @code, @title, @url, @pdf_url, @disclosed_at, @source, @external_id
       )
     `);
 
@@ -164,10 +114,7 @@ export async function POST() {
         }
 
         if (x.companyName) {
-          upsertCompany.run({
-            code: x.code,
-            name: x.companyName,
-          });
+          upsertCompany.run({ code: x.code, name: x.companyName });
         }
 
         const info = insertDisclosure.run({
@@ -197,9 +144,6 @@ export async function POST() {
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
-    return Response.json(
-      { ok: false, error: msg },
-      { status: 500 }
-    );
+    return Response.json({ ok: false, error: msg }, { status: 500 });
   }
 }

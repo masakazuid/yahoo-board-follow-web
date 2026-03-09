@@ -1,117 +1,50 @@
 [
-  {
-    "code": "456A",
-    "name": "ＨＵＭＡＮ　ＭＡＤＥ(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835704/bc57e4414e156c472a35c4a7c6c5fbd4/comment.xml"
-  },
-  {
-    "code": "151A",
-    "name": "(株)ダイブ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/96438ed9171c250f3c13934e7f1f2b9e/comment.xml"
-  },
-  {
-    "code": "1376",
-    "name": "カネコ種苗(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001376/a5aba5ma53bcoid/comment.xml"
-  },
-  {
-    "code": "1518",
-    "name": "三井松島ホールディングス(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001518/bb00fbebeegbbba6h/comment.xml"
-  },
-  {
-    "code": "4208",
-    "name": "ＵＢＥ(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004208/1a7it6bdbbba/comment.xml"
-  },
-  {
-    "code": "8595",
-    "name": "ジャフコ　グループ(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008595/a58a5ca5ua53/comment.xml"
-  },
-  {
-    "code": "3636",
-    "name": "(株)三菱総合研究所",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003636/3636/comment.xml"
-  },
-  {
-    "code": "1770",
-    "name": "藤田エンジニアリング(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001770/fa3eda5a8a5sa58a5ka5a2a5ja5sa50/comment.xml"
-  },
-  {
-    "code": "4933",
-    "name": "(株)Ｉ－ｎｅ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835640/16c683b92ae31d2fb1ace5193120ad9a/comment.xml"
-  },
-  {
-    "code": "7094",
-    "name": "(株)ＮｅｘＴｏｎｅ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/447aca13ef6045fc3fdf324cee713642/comment.xml"
-  },
-  {
-    "code": "3388",
-    "name": "明治電機工業(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003388/3388/comment.xml"
-  },
-  {
-    "code": "7347",
-    "name": "(株)マーキュリアホールディングス",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/fb02b999fad2e57eb760878a0acb5875/comment.xml"
-  },
-  {
-    "code": "5363",
-    "name": "(株)ＴＹＫ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005363/a3ta3ya3k/comment.xml"
-  },
-  {
-    "code": "8255",
-    "name": "アクシアル　リテイリング(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008255/86bfae/comment.xml"
-  },
-  {
-    "code": "7172",
-    "name": "(株)ジャパンインベストメントアドバイザー",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/334961eb7d13632aec1981255e9345b8/comment.xml"
-  },
-  {
-    "code": "8218",
-    "name": "(株)コメリ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008218/a53a5aa5j/comment.xml"
-  },
-  {
-    "code": "7148",
-    "name": "(株)ＦＰＧ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007148/7148/comment.xml"
-  },
-  {
-    "code": "6149",
-    "name": "(株)小田原エンジニアリング",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006149/beaeed86a5a8a5sa58a5ka5a2a5ja5sa50/comment.xml"
-  },
-  {
-    "code": "6382",
-    "name": "トリニティ工業(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006382/a5ha5ja5ka5fa5a39a96h/comment.xml"
-  },
-  {
-    "code": "7235",
-    "name": "東京ラヂエーター製造(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007235/el5fea5ia5ba5a8a1bca5bfa1bcc0bdba4/comment.xml"
-  },
-  {
-    "code": "4471",
-    "name": "三洋化成工業(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004471/bb0mn2bdc0ae9a96h/comment.xml"
-  },
-  {
-    "code": "6488",
-    "name": "(株)ヨシタケ",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006488/a5ha57a5bfa51/comment.xml"
-  },
-  {
-    "code": "9906",
-    "name": "藤井産業(株)",
-    "feed_url": "https://finance.yahoo.co.jp/cm/rss/1009906/fa30fbbba6h/comment.xml"
-  }
+  { "code": "456A", "name": "ＨＵＭＡＮ　ＭＡＤＥ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835704/bc57e4414e156c472a35c4a7c6c5fbd4/comment.xml" },
+  { "code": "151A", "name": "(株)ダイブ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/96438ed9171c250f3c13934e7f1f2b9e/comment.xml" },
+  { "code": "1376", "name": "カネコ種苗(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001376/a5aba5ma53bcoid/comment.xml" },
+  { "code": "1518", "name": "三井松島ホールディングス(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001518/bb00fbebeegbbba6h/comment.xml" },
+  { "code": "4208", "name": "ＵＢＥ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004208/1a7it6bdbbba/comment.xml" },
+  { "code": "8595", "name": "ジャフコ　グループ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008595/a58a5ca5ua53/comment.xml" },
+  { "code": "3636", "name": "(株)三菱総合研究所", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003636/3636/comment.xml" },
+  { "code": "1770", "name": "藤田エンジニアリング(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001770/fa3eda5a8a5sa58a5ka5a2a5ja5sa50/comment.xml" },
+  { "code": "4933", "name": "(株)Ｉ－ｎｅ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835640/16c683b92ae31d2fb1ace5193120ad9a/comment.xml" },
+  { "code": "7094", "name": "(株)ＮｅｘＴｏｎｅ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835105/447aca13ef6045fc3fdf324cee713642/comment.xml" },
+  { "code": "3388", "name": "明治電機工業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003388/3388/comment.xml" },
+  { "code": "7347", "name": "(株)マーキュリアホールディングス", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/fb02b999fad2e57eb760878a0acb5875/comment.xml" },
+  { "code": "5363", "name": "(株)ＴＹＫ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005363/a3ta3ya3k/comment.xml" },
+  { "code": "8255", "name": "アクシアル　リテイリング(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008255/86bfae/comment.xml" },
+  { "code": "7172", "name": "(株)ジャパンインベストメントアドバイザー", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1835708/334961eb7d13632aec1981255e9345b8/comment.xml" },
+  { "code": "8218", "name": "(株)コメリ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008218/a53a5aa5j/comment.xml" },
+  { "code": "7148", "name": "(株)ＦＰＧ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007148/7148/comment.xml" },
+  { "code": "6149", "name": "(株)小田原エンジニアリング", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006149/beaeed86a5a8a5sa58a5ka5a2a5ja5sa50/comment.xml" },
+  { "code": "6382", "name": "トリニティ工業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006382/a5ha5ja5ka5fa5a39a96h/comment.xml" },
+  { "code": "7235", "name": "東京ラヂエーター製造(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007235/el5fea5ia5ba5a8a1bca5bfa1bcc0bdba4/comment.xml" },
+  { "code": "4471", "name": "三洋化成工業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004471/bb0mn2bdc0ae9a96h/comment.xml" },
+  { "code": "6488", "name": "(株)ヨシタケ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006488/a5ha57a5bfa51/comment.xml" },
+  { "code": "9906", "name": "藤井産業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1009906/fa30fbbba6h/comment.xml" },
+  { "code": "5994", "name": "(株)ファインシンター", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005994/el5fedfv7k6bb0/comment.xml" },
+  { "code": "6995", "name": "(株)東海理化", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006995/el3a4mfd2bd/comment.xml" },
+  { "code": "9845", "name": "(株)パーカーコーポレーション", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1009845/a5qa1bca5aba1bca53a1bca5dda5la1bca57a5ga5s/comment.xml" },
+  { "code": "4635", "name": "東京インキ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004635/el5fea5a4a5sa5ad/comment.xml" },
+  { "code": "6267", "name": "ゼネラルパッカー(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006267/6267/comment.xml" },
+  { "code": "1899", "name": "(株)福田組", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001899/ja1edah/comment.xml" },
+  { "code": "1867", "name": "(株)植木組", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001867/bfa2lzah/comment.xml" },
+  { "code": "9896", "name": "ＪＫホールディングス(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1009896/a58a5ca5qa5s7zbae0/comment.xml" },
+  { "code": "1716", "name": "第一カッター興業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001716/1716/comment.xml" },
+  { "code": "6505", "name": "東洋電機製造(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006505/elmnee5a1c0bdba4/comment.xml" },
+  { "code": "8739", "name": "スパークス・グループ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1008739/8739/comment.xml" },
+  { "code": "7208", "name": "(株)カネミツ", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007208/7208/comment.xml" },
+  { "code": "4231", "name": "タイガースポリマー(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1004231/a5bfa5a4a5aca1bca59a5dda5ja5dea1bc/comment.xml" },
+  { "code": "3553", "name": "共和レザー(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003553/6a6oba5la56a1bc/comment.xml" },
+  { "code": "5541", "name": "大平洋金属(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005541/bgjbfmn6bb0/comment.xml" },
+  { "code": "6248", "name": "(株)横田製作所", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006248/6248/comment.xml" },
+  { "code": "5947", "name": "リンナイ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005947/a5ja5sa5ja5a4/comment.xml" },
+  { "code": "3513", "name": "イチカワ(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003513/bbtc0nlsbfa5/comment.xml" },
+  { "code": "3954", "name": "昭和パックス(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003954/bebcoba5qa5ca5afa59/comment.xml" },
+  { "code": "1662", "name": "石油資源開発(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1001662/1662/comment.xml" },
+  { "code": "3420", "name": "(株)ケー・エフ・シー", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1003420/a51a1bca1a6a5a8a5ua1a6a57a1bc/comment.xml" },
+  { "code": "5367", "name": "(株)ニッカトー", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1005367/a5ka5ca5aba5ha1bc/comment.xml" },
+  { "code": "6365", "name": "(株)電業社機械製作所", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006365/ee6hbcr5a13a3c0bdbanbdj/comment.xml" },
+  { "code": "6470", "name": "大豊工業(株)", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1006470/bgkad9a96h/comment.xml" },
+  { "code": "7264", "name": "(株)ムロコーポレーション", "feed_url": "https://finance.yahoo.co.jp/cm/rss/1007264/a5e0a5ma53a1bca5dda5la1bca57a5ga5s/comment.xml" }
 ]
