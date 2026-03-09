@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { db } from "@/lib/db";
 import { ensureSeeded } from "@/lib/seed";
 import { codeFromFeedUrl } from "@/lib/key";

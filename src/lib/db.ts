@@ -16,7 +16,8 @@ function pickDbPath() {
 }
 
 const dbPath = pickDbPath();
-export const db = new Database(dbPath);
+export const db = new Database(dbPath, { timeout: 5000 });
+db.pragma("busy_timeout = 5000");
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS posts (
